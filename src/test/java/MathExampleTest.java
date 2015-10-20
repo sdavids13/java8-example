@@ -12,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class MathExampleTest {
 
     @Parameterized.Parameters(name = "{0}")
-    public static Collection<MathExample[]> data() {
+    public static Collection<MathExample[]> implementations() {
         return Arrays.asList(new MathExample[][] {
             {new Java7Example()}, {new Java8Example()}
         });

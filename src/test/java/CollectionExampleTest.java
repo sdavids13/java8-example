@@ -12,8 +12,8 @@ import static org.hamcrest.Matchers.*;
 public class CollectionExampleTest {
 
     @Parameterized.Parameters(name = "{0}")
-    public static Collection<MathExample[]> data() {
-        return Arrays.asList(new MathExample[][] {
+    public static Collection<CollectionExample[]> implementations() {
+        return Arrays.asList(new CollectionExample[][] {
             {new Java7Example()}, {new Java8Example()}
         });
     }
