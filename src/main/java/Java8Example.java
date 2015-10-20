@@ -18,10 +18,15 @@ public class Java8Example implements CollectionExample, MathExample {
     }
 
     @Override
-    public void addValue(Map<String, List<String>> map, String key, String value) {
-        List<String> entry = map.getOrDefault(key, new ArrayList<>());
+    public <K, V> void addValue(Map<K, List<V>> map, K key, V value) {
+        List<V> entry = map.getOrDefault(key, new ArrayList<>());
         entry.add(value);
         map.putIfAbsent(key, entry);
+    }
+
+    @Override
+    public <K, V> Map<V, K> invert(Map<K, V> mapToInvert) {
+        return mapToInvert.entrySet().stream().collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey));
     }
 
     @Override

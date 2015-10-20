@@ -56,4 +56,16 @@ public class CollectionExampleTest {
         assertThat(sortedSet, contains("", "1", "22", "333", "4444"));
     }
 
+    @Test
+    public void invertMap() {
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(1, 101);
+        map.put(2, 102);
+        map.put(3, 103);
+
+        assertThat(implementation.invert(map), allOf(
+                hasEntry(101, 1), hasEntry(102, 2), hasEntry(103, 3)
+        ));
+    }
+
 }

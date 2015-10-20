@@ -29,14 +29,23 @@ public class Java7Example implements CollectionExample, MathExample {
     }
 
     @Override
-    public void addValue(Map<String, List<String>> map, String key, String value) {
-        List<String> entry = map.get(key);
+    public <K, V> void addValue(Map<K, List<V>> map, K key, V value) {
+        List<V> entry = map.get(key);
         if(entry == null) {
             entry = new ArrayList<>();
             map.put(key, entry);
         }
 
         entry.add(value);
+    }
+
+    @Override
+    public <K, V> Map<V, K> invert(Map<K, V> mapToInvert) {
+        Map<V, K> invertedMap = new HashMap<>();
+        for(Map.Entry<K, V> entry : mapToInvert.entrySet()) {
+            invertedMap.put(entry.getValue(), entry.getKey());
+        }
+        return invertedMap;
     }
 
     @Override

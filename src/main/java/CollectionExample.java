@@ -17,7 +17,12 @@ public interface CollectionExample {
     /**
      * Adds a value to the key's list of values, if no value is available a new value list is created.
      */
-    void addValue(Map<String, List<String>> map, String key, String value);
+    <K, V> void addValue(Map<K, List<V>> map, K key, V value);
+
+    /**
+     * @return A new map where the key is the input's value and the value is the input's key
+     */
+    <K, V> Map<V, K> invert(Map<K, V> mapToInvert);
 
     /**
      * @return a Comparator which orders from smallest strings to largest
